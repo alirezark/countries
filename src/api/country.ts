@@ -1,13 +1,14 @@
 import type { Pagination } from "@/types";
 import axios from "@/utils/axios";
+import { toQSString } from "@/utils/utils";
 
 export async function loadCountries({
   page = 0,
-  pageSize = 8,
+  pageSize = 12,
 }: Partial<Pagination> = {}) {
-  const qr = JSON.stringify({ page, pageSize });
+  const qs = toQSString({ page, pageSize });
 
-  const response = await axios.get(`/api/country/list?${qr}`);
+  const response = await axios.get(`/api/country/list?${qs}`);
 
   return response?.data;
 }
