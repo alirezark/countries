@@ -1,8 +1,8 @@
+import type { CountryResponse } from "@/api";
+import { loadCountries } from "@/api/country";
 import { Meta } from "@/components/meta/Meta";
 import Home from "@/layouts/home";
 import Main from "@/templates/main";
-import { loadCountries } from "@/api/country";
-import type { CountryResponse } from "@/api";
 
 type PageProps = {
   data: CountryResponse;

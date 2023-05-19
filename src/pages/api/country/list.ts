@@ -16,7 +16,7 @@ export default async function handler(
       return res.status(405).send({ message: "Method not allowed.", data: [] });
     }
 
-    const { page = 0, pageSize = 8 }: Partial<Pagination> = req.query;
+    const { page = 0, pageSize = 12 }: Partial<Pagination> = req.query;
 
     const countriesResponse = await axios.get(
       "https://restcountries.com/v3.1/all"
@@ -24,8 +24,8 @@ export default async function handler(
 
     const countries =
       countriesResponse.data?.slice(
-        page * pageSize,
-        page * pageSize + pageSize
+        +page * +pageSize,
+        +page * +pageSize + +pageSize
       ) || [];
 
     const pagination = {
