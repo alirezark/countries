@@ -1,7 +1,8 @@
-import React from "react";
-import Button from "@/components/ui/button";
-import Iconify from "@/components/iconify";
 import { useRouter } from "next/router";
+import React from "react";
+
+import Iconify from "@/components/iconify";
+import Button from "@/components/ui/button";
 
 function Header() {
   const router = useRouter();
@@ -9,7 +10,7 @@ function Header() {
     router.push("/");
   };
   return (
-    <div className="mb-16 mt-10">
+    <div className="my-8 md:mb-12 md:mt-8">
       <Button
         type="button"
         onClick={handleBack}

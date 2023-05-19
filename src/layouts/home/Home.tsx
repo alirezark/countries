@@ -56,7 +56,7 @@ function Home({ data, searchedText, searchedRegion }: HomeProps) {
       {isLoading && !countriesData ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3  2xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 p-6 md:p-0">
           {countriesData?.pages.map((countries) =>
             countries.data?.map((c: Country) => (
               <CountryCard key={c.name.common} data={c} />

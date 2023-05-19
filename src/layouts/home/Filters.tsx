@@ -69,20 +69,23 @@ function Filters() {
   };
 
   return (
-    <div className="flex justify-between items-center mb-6">
+    <div className="md:flex justify-between items-center mb-6">
       <SearchInput
         value={searchedText}
         onChange={onSearchedTextChange}
         onKeyDown={onKeyDown}
         showEnter={searchedText?.length > 2 && name !== searchedText}
         placeholder="Search for a country..."
+        className="w-full md:w-80"
       />
-      <Select
-        label="Filter by Region"
-        value={region?.toString()}
-        onChange={(value) => onRegionChange(value)}
-        options={regions}
-      />
+      <div className="mt-8 md:mt-0">
+        <Select
+          label="Filter by Region"
+          value={region?.toString()}
+          onChange={(value) => onRegionChange(value)}
+          options={regions}
+        />
+      </div>
     </div>
   );
 }

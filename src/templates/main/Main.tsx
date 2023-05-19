@@ -19,7 +19,7 @@ const Main = (props: IMainProps) => (
 
     <Header />
 
-    <div className="mx-auto max-w-screen-2xl px-2">
+    <div className="mx-auto max-w-screen-2xl px-6 md:px-2">
       <main className="content py-5 text-xl">{props.children}</main>
     </div>
   </div>

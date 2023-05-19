@@ -27,7 +27,7 @@ function Info({ data }: InfoProps) {
   return (
     <div>
       <h1 className="text-2xl font-extrabold mb-3">{data.name.common}</h1>
-      <div className="flex space-x-16">
+      <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-16">
         <div>
           <InfoRow
             label="Native Name"
