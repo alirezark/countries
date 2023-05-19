@@ -4,13 +4,13 @@ import type { Country, ResponseType } from "@/types";
 import axios from "@/utils/axios";
 import { regions } from "@/constants/regions";
 
-type User = ResponseType & { data: Country[] };
+type Response = ResponseType & { data: Country[] };
 
 const allowedMethods = ["GET"];
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<User>
+  res: NextApiResponse<Response>
 ) {
   try {
     if (!allowedMethods.includes(req.method!) || req.method === "OPTIONS") {

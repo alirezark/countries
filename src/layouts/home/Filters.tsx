@@ -74,7 +74,7 @@ function Filters() {
         value={searchedText}
         onChange={onSearchedTextChange}
         onKeyDown={onKeyDown}
-        showEnter={searchedText?.length > 2 && query.q !== searchedText}
+        showEnter={searchedText?.length > 2 && name !== searchedText}
         placeholder="Search for a country..."
       />
       <Select

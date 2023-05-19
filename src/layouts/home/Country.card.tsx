@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import type { Country } from "@/api";
+import Link from "next/link";
 
 type DetailRowProps = {
   title: string;
@@ -23,31 +24,33 @@ export type CountryCardProps = {
 
 function CountryCard({ data }: CountryCardProps) {
   return (
-    <div className="overflow-hidden rounded shadow">
-      <div className="relative" style={{ aspectRatio: "4/2.2" }}>
-        <Image
-          src={data.flags.svg}
-          alt={data.name.common}
-          quality={100}
-          fill
-          style={{ objectFit: "cover" }}
-        />
+    <Link href={`/country/${data.name.common}`} className="border-none">
+      <div className="overflow-hidden rounded text-gray-800 decoration-0 shadow hover:bg-gray-100">
+        <div className="relative" style={{ aspectRatio: "4/2.2" }}>
+          <Image
+            src={data.flags.svg}
+            alt={data.name.common}
+            quality={100}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="p-5">
+          <h2
+            className="overflow-hidden text-ellipsis whitespace-nowrap font-bold"
+            title={data.name.common}
+          >
+            {data.name.common}
+          </h2>
+          <DetailRow title="Population" description={data.population} />
+          <DetailRow title="Region" description={data.region} />
+          <DetailRow
+            title="Capital"
+            description={data.capital?.join(", ") || "---"}
+          />
+        </div>
       </div>
-      <div className="p-5">
-        <h2
-          className="overflow-hidden text-ellipsis whitespace-nowrap font-bold"
-          title={data.name.common}
-        >
-          {data.name.common}
-        </h2>
-        <DetailRow title="Population" description={data.population} />
-        <DetailRow title="Region" description={data.region} />
-        <DetailRow
-          title="Capital"
-          description={data.capital?.join(", ") || "---"}
-        />
-      </div>
-    </div>
+    </Link>
   );
 }
 

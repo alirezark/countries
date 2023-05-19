@@ -19,3 +19,9 @@ export async function loadCountries({
 
   return response?.data;
 }
+
+export async function loadCountry({ name }: LoadCountries = {}) {
+  const response = await axios.get(`/api/country/${name}`);
+
+  return response?.data;
+}
