@@ -12,8 +12,8 @@ import type { Country } from "@/types";
 
 type HomeProps = {
   data: CountryResponse;
-  searchedText: string;
-  searchedRegion: string;
+  searchedText?: string;
+  searchedRegion?: string;
 };
 
 function Home({ data, searchedText, searchedRegion }: HomeProps) {
@@ -31,6 +31,7 @@ function Home({ data, searchedText, searchedRegion }: HomeProps) {
   } = useInfiniteQuery(
     ["countries", name, region],
     async ({ pageParam = 0 }) => {
+      console.log("HI", name, searchedText, region, searchedRegion);
       const result =
         pageParam === 0 && name === searchedText && region === searchedRegion
           ? data
@@ -56,7 +57,7 @@ function Home({ data, searchedText, searchedRegion }: HomeProps) {
       {isLoading && !countriesData ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 p-6 md:p-0">
+        <div className="grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 md:grid-cols-3 md:p-0 2xl:grid-cols-4">
           {countriesData?.pages.map((countries) =>
             countries.data?.map((c: Country) => (
               <CountryCard key={c.name.common} data={c} />

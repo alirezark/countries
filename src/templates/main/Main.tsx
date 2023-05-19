@@ -14,7 +14,9 @@ const nunitoSans = Nunito_Sans({
 });
 
 const Main = (props: IMainProps) => (
-  <div className={`w-fullantialiased ${nunitoSans.className}`}>
+  <div
+    className={`${nunitoSans.className} h-screen bg-gray-50 dark:bg-slate-800`}
+  >
     {props.meta}
 
     <Header />

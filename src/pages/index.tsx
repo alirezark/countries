@@ -20,7 +20,11 @@ const Index = ({ data, name, region }: PageProps) => {
         />
       }
     >
-      <Home data={data} searchedText={name} searchedRegion={region} />
+      <Home
+        data={data}
+        searchedText={name?.length === 0 ? undefined : name}
+        searchedRegion={region?.length === 0 ? undefined : region}
+      />
     </Main>
   );
 };

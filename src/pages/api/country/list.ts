@@ -34,8 +34,6 @@ export default async function handler(
       });
     }
 
-    console.log(name, name?.trim()?.length);
-
     const pagination = {
       page: +page,
       pageSize: +pageSize,

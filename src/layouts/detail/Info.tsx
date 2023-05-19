@@ -64,7 +64,7 @@ function Info({ data }: InfoProps) {
                 >
                   <Button
                     elevated
-                    className="mb-1 mr-1 inline-block py-1 text-sm"
+                    className="mb-1 mr-1 inline-block py-1 text-sm dark:bg-slate-700"
                   >
                     {border}
                   </Button>

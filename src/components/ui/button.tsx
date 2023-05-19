@@ -11,8 +11,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 function Button({ className, elevated, icon, children, ...rest }: ButtonProps) {
   const btnClassName =
     overrideTailwindClasses(`flex items-center px-4 py-2 font-medium tracking-wide text-gray-700 capitalize 
-  transition-colors duration-300 transform rounded-sm hover:bg-gray-300 active:bg-gray-400 
-  ${elevated ? "shadow-md" : ""} ${className || ""}`);
+  transition-colors font-semibold duration-300 transform rounded-sm hover:bg-gray-300 active:bg-gray-400 dark:text-gray-100 
+  dark:hover:bg-slate-800 ${elevated ? "shadow-md" : ""} ${className || ""}`);
 
   return (
     <button type="button" {...rest} className={btnClassName}>

@@ -12,10 +12,6 @@ a:hover {
 
 @tailwind utilities;
 
-html {
-  background: #fafafa;
-}
-
 .content p {
   @apply my-6;
 }

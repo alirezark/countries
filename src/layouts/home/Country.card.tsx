@@ -25,7 +25,7 @@ export type CountryCardProps = {
 function CountryCard({ data }: CountryCardProps) {
   return (
     <Link href={`/country/${data.name.common}`} className="border-none">
-      <div className="overflow-hidden rounded text-gray-800 decoration-0 shadow hover:bg-gray-100">
+      <div className="overflow-hidden rounded text-gray-800 decoration-0 shadow hover:bg-gray-100 dark:bg-slate-700 dark:text-gray-100 dark:hover:bg-slate-800 lg:transition-colors">
         <div className="relative" style={{ aspectRatio: "4/2.2" }}>
           <Image
             src={data.flags.svg}
