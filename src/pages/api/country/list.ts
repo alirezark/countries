@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import { regions } from "@/constants/regions";
 import type { Country, ResponseType } from "@/types";
 import axios from "@/utils/axios";
-import { regions } from "@/constants/regions";
 
 type Response = ResponseType & { data: Country[] };
 

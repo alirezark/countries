@@ -2,26 +2,7 @@ import { loadCountry } from "@/api";
 import { Meta } from "@/components/meta/Meta";
 import Detail from "@/layouts/detail";
 import Main from "@/templates/main";
-import { Country } from "@/types";
-
-// export const getStaticPaths: GetStaticPaths<IBlogUrl> = async () => {
-//   return {
-//     paths: [...Array(10)].map((_, index) => ({
-//       params: { slug: `blog-${index}` },
-//     })),
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps: GetStaticProps<IBlogUrl, IBlogUrl> = async ({
-//   params,
-// }) => {
-//   return {
-//     props: {
-//       slug: params!.slug,
-//     },
-//   };
-// };
+import type { Country } from "@/types";
 
 type BlogProps = {
   data: Country;

@@ -1,5 +1,6 @@
 import React from "react";
 import { overrideTailwindClasses } from "tailwind-override";
+
 import Iconify from "@/components/iconify";
 
 export type SearchInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -13,8 +14,8 @@ function SearchInput({
   ...rest
 }: SearchInputProps) {
   return (
-    <div className="relative flex items-center mt-2">
-      <span className="absolute text-gray-600 px-3">
+    <div className="relative mt-2 flex items-center">
+      <span className="absolute px-3 text-gray-600">
         <Iconify icon="ic:baseline-search" />
       </span>
 
@@ -28,7 +29,7 @@ function SearchInput({
       />
 
       <span
-        className={`absolute text-sky-700 transition-opacity text-sm font-semibold px-2 right-0 ${
+        className={`absolute right-0 px-2 text-sm font-semibold text-sky-700 transition-opacity ${
           !showEnter && "opacity-0"
         }`}
       >
