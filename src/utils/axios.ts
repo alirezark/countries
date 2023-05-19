@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:3000" });
+import { BaseUrl } from "@/config";
+
+const axiosInstance = axios.create({
+  baseURL: BaseUrl,
+});
 
 axiosInstance.interceptors.response.use(
   (response) => response,
