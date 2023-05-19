@@ -19,7 +19,15 @@ function Header() {
 
         <Button
           onClick={toggleDarkMode}
-          icon={<Iconify icon="material-symbols:dark-mode-outline-rounded" />}
+          icon={
+            <Iconify
+              icon={
+                currentTheme === "dark"
+                  ? "material-symbols:light-mode-outline"
+                  : "material-symbols:dark-mode-outline-rounded"
+              }
+            />
+          }
         >
           {currentTheme === "dark" ? "Light Mode" : "Dark Mode"}
         </Button>
