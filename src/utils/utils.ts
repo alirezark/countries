@@ -1,3 +1,7 @@
 export function toQSString(params: any): string {
-  return new URLSearchParams(params).toString();
+  const filteredParams: any = Object.fromEntries(
+    Object.entries(params).filter(([_, value]) => value !== undefined)
+  );
+
+  return new URLSearchParams(filteredParams).toString();
 }

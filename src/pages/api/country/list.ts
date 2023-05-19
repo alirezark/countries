@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import type { Country, Pagination, ResponseType } from "@/types";
+import type { Country, ResponseType } from "@/types";
 import axios from "@/utils/axios";
+import { regions } from "@/constants/regions";
 
 type User = ResponseType & { data: Country[] };
 
@@ -16,23 +17,35 @@ export default async function handler(
       return res.status(405).send({ message: "Method not allowed.", data: [] });
     }
 
-    const { page = 0, pageSize = 12 }: Partial<Pagination> = req.query;
+    const { page = 0, pageSize = 12, name, region }: any = req.query;
 
     const countriesResponse = await axios.get(
-      "https://restcountries.com/v3.1/all"
+      regions.includes(region)
+        ? `https://restcountries.com/v3.1/region/${region}`
+        : "https://restcountries.com/v3.1/all"
     );
 
-    const countries =
-      countriesResponse.data?.slice(
-        +page * +pageSize,
-        +page * +pageSize + +pageSize
-      ) || [];
+    let countries = countriesResponse.data || [];
+
+    if (name?.trim()?.length > 2) {
+      const regex = new RegExp(name.trim().split("").join(".*"), "i");
+      countries = countries.filter((country: Country) => {
+        return regex.test(country.name.common);
+      });
+    }
+
+    console.log(name, name?.trim()?.length);
 
     const pagination = {
-      page,
-      pageSize,
-      total: countriesResponse.data?.length || 0,
+      page: +page,
+      pageSize: +pageSize,
+      total: countries?.length || 0,
     };
+
+    countries = countries.slice(
+      +page * +pageSize,
+      +page * +pageSize + +pageSize
+    );
 
     return res.status(200).json({ data: countries, pagination });
   } catch (error) {

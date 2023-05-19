@@ -6,9 +6,11 @@ import Main from "@/templates/main";
 
 type PageProps = {
   data: CountryResponse;
+  name: string;
+  region: string;
 };
 
-const Index = ({ data }: PageProps) => {
+const Index = ({ data, name, region }: PageProps) => {
   return (
     <Main
       meta={
@@ -18,17 +20,20 @@ const Index = ({ data }: PageProps) => {
         />
       }
     >
-      <Home data={data} />
+      <Home data={data} searchedText={name} searchedRegion={region} />
     </Main>
   );
 };
 
-export async function getServerSideProps() {
-  const countriesData = await loadCountries();
+export async function getServerSideProps({ query }: any) {
+  const { name, region } = query;
+  const countriesData = await loadCountries({ name, region });
 
   return {
     props: {
       data: countriesData,
+      name: name || "",
+      region: region || "",
     }, // will be passed to the page component as props
   };
 }
